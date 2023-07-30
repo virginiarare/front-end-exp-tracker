@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const baseURI = 'http://localhost:5000';
+const baseURI = 'https://back-end-exp-tracker.onrender.com';
 
 export const apiSlice = createApi({
     baseQuery : fetchBaseQuery({ baseUrl : baseURI}),
@@ -8,14 +8,14 @@ export const apiSlice = createApi({
         // get categories
         getCategories : builder.query({
             // get: 'http://localhost:5000/api/categories'
-            query: () => '/api/categories',
+            query: () => '/categories',
             providesTags: ['categories']
         }),
 
         // get labels
         getLabels : builder.query({
             // get: 'http://localhost:5000/api/labels'
-            query : () => '/api/labels',
+            query : () => '/labels',
             providesTags: ['transaction']
         }),
 
@@ -23,7 +23,7 @@ export const apiSlice = createApi({
         addTransaction : builder.mutation({
             query : (initialTransaction) => ({
                   // post: 'http://localhost:5000/api/transaction'
-                url: '/api/transaction',
+                url: '/transaction',
                 method: "POST",
                 body: initialTransaction
             }),
@@ -34,7 +34,7 @@ export const apiSlice = createApi({
         deleteTransaction : builder.mutation({
             query : recordId => ({
                 // delete: 'http://localhost:5000/api/transaction'
-                url : '/api/transaction',
+                url : '/transaction',
                 method : "DELETE",
                 body : recordId
             }),
