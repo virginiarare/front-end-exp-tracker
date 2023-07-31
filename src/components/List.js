@@ -17,7 +17,7 @@ export default function List() {
     if(isFetching){
         Transactions = <div>Fetching</div>;
     }else if(isSuccess){
-        Transactions = data.map((v, i) => <Transaction key={i} category={v} handler={handlerClick} ></Transaction>);
+        Transactions = data.map((v, i) => <Transaction key={i} category={v} amount={v.amount} handler={handlerClick} ></Transaction>);
     }else if(isError){
         Transactions = <div>Error</div>
     }
@@ -32,12 +32,13 @@ export default function List() {
   )
 }
 
-function Transaction({category, handler}){
+function Transaction({category, amount, handler}){
     if(!category) return null;
     return (
         <div className="item flex justify-center bg-gray-50 py-2 rounded-r" style={{ borderRight : `8px solid ${category.color ??  "#e5e5e5"}`}}>
             <button className='px-3' onClick={handler}><box-icon data-id={category._id ?? ''}  size="20px" color={category.color ??  "#e5e5e5"} name="x-circle"></box-icon></button>            
-            <span className='block w-full'>{category.name ?? ''}</span>
+            <span className='block w-full text-left'>{category.name ?? ''}</span>
+            <span className="text-right pr-2">{amount ? `$${amount.toFixed(2)}` : ''}</span>
         </div>
     )
 }
