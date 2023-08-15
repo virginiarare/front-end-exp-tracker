@@ -1,70 +1,101 @@
-# Getting Started with Create React App
+# Money Tracker 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This app was created as a capstone project for ADA Developers Academy. The purpose of this app is to easily visualize, in a simple way, how our money is distributed between our expenses, income, and savings. This visualization helps users make better financial decisions.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+### Category Management
 
-### `npm start`
+Manage your income and expenses by creating, updating, and deleting categories. Assign colors to categories for easy visual identification.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Transaction Recording
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Effortlessly record your financial transactions. Include details such as the transaction's name, amount, type (income, expense or savings). Categorize each transaction under the appropriate category.
 
-### `npm test`
+### Data Visualization
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Gain insights into your financial habits with an interactive pie chart. Visualize your spending and income patterns to understand where your money is being spent and how much you're saving.
 
-### `npm run build`
+### Transaction History
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Keep track of all your financial activities. Access a comprehensive history of all recorded transactions, complete with important details like transaction description and amounts.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Labeling and Filtering
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Organize your transactions with ease. Attach labels or tags to transactions for simple categorization. 
 
-### `npm run eject`
+### Slack Notifications
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Receive real-time updates with Slack notifications for each posted transaction. Stay informed about your financial activities without having to constantly check the app.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Dependencies 
+Frontend
+*React
+Backend
+*Express
+*Node 
+*MongoDB
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## API Documentation
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Categories
 
-## Learn More
+#### Create a Category
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **Route:** `POST /categories`
+- **Description:** Create a new category for income or expenses.
+- **Request Body:** None
+- **Response:** Returns the created category with type and color.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### Get Categories
 
-### Code Splitting
+- **Route:** `GET /categories`
+- **Description:** Get a list of all categories.
+- **Response:** Returns an array of categories with type and color.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Transactions
 
-### Analyzing the Bundle Size
+#### Create a Transaction
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- **Route:** `POST /transaction`
+- **Description:** Create a new transaction.
+- **Request Body:** Include `name`, `type`, and `amount`.
+- **Response:** Returns the created transaction with details.
 
-### Making a Progressive Web App
+#### Get Transactions
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- **Route:** `GET /transaction`
+- **Description:** Get a list of all transactions.
+- **Response:** Returns an array of transactions.
 
-### Advanced Configuration
+#### Delete a Transaction
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- **Route:** `DELETE /transaction`
+- **Description:** Delete a transaction by providing the transaction details in the request body.
+- **Request Body:** Include transaction details to delete.
+- **Response:** Returns a message indicating whether the record was deleted or not.
 
-### Deployment
+### Labels
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+#### Get Transaction Labels with Colors
 
-### `npm run build` fails to minify
+- **Route:** `GET /labels`
+- **Description:** Get transaction labels along with their associated colors.
+- **Response:** Returns an array of transaction details with labels and colors.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Deployment
+
+The Expense Tracker App has been deployed on [Render](https://render.com/).
+
+You can access the deployed app at: [https://money-tracker-3k43.onrender.com/]
+
+## Getting Started
+
+1. Clone this repository.
+2. Install dependencies using `npm install`.
+3. Set up your MongoDB database connection.
+4. Start the server using `npm start`.
+
+---
+
+Thank you for using the Money Tracker App! These features are designed to provide you with a comprehensive tool for managing your finances effectively and making informed financial decisions.
